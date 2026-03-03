@@ -6,7 +6,103 @@
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
       Title="Page2">
-    <Grid>
 
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               Source="/Images/Func2.png" 
+               MaxHeight="120" 
+               Margin="5" 
+               HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Формула: g = e^(f(x)-|b|) при 0.5 &lt; x·b &lt; 10; g = √(|f(x)|+|b|) при 0.1 &lt; x·b &lt; 0.5; g = 2f(x)² в остальных случаях" TextWrapping="Wrap" MaxWidth="300"/>
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Введите x:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="InputX" Width="200" Margin="5" Padding="5" FontSize="14">
+            <TextBox.ToolTip>
+                <ToolTip Content="Введите значение для переменной x"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <!-- Строка 2: Ввод b -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Введите b:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="InputY" Width="200" Margin="5" Padding="5" FontSize="14">
+            <TextBox.ToolTip>
+                <ToolTip Content="Введите значение для переменной b"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Выберите f(x):" VerticalAlignment="Center" Margin="5" FontSize="14" FontWeight="Bold"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="5">
+            <RadioButton Name="FuncSh" Content="sh(x) - гиперболический синус" Margin="0 2" FontSize="12" GroupName="FunctionGroup" IsChecked="True">
+                <RadioButton.ToolTip>
+                    <ToolTip Content="f(x) = sh(x) = (e^x - e^(-x))/2"/>
+                </RadioButton.ToolTip>
+            </RadioButton>
+            <RadioButton Name="FuncX2" Content="x²" Margin="0 2" FontSize="12" GroupName="FunctionGroup">
+                <RadioButton.ToolTip>
+                    <ToolTip Content="f(x) = x²"/>
+                </RadioButton.ToolTip>
+            </RadioButton>
+            <RadioButton Name="FuncEx" Content="e^x" Margin="0 2" FontSize="12" GroupName="FunctionGroup">
+                <RadioButton.ToolTip>
+                    <ToolTip Content="f(x) = e^x"/>
+                </RadioButton.ToolTip>
+            </RadioButton>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Name="CalculateButton" Content="Вычислить" Width="100" Height="30" Margin="5" FontSize="14" Click="CalculateButton_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Рассчитать значение функции"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Name="ClearButton" Content="Очистить" Width="100" Height="30" Margin="5" FontSize="14" Click="ClearButton_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Очистить все поля"/>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Результат g:" VerticalAlignment="Center" Margin="5" FontSize="14" FontWeight="Bold"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="ResultBox" Width="200" Height="30" Margin="5" Padding="5" 
+                 IsReadOnly="True" 
+                 Background="#FFF0F0F0"
+                 FontSize="14"
+                 Text="Результат">
+            <TextBox.ToolTip>
+                <ToolTip Content="Значение функции g"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                Name="BackButton"
+                Content="На главную" 
+                Width="120" Height="30"
+                HorizontalAlignment="Center"
+                Margin="5"
+                FontSize="14"
+                Click="BackButton_Click">
+            <Button.ToolTip>
+                <ToolTip Content="Вернуться на главную"/>
+            </Button.ToolTip>
+        </Button>
     </Grid>
 </Page>
