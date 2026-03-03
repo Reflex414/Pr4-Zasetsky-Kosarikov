@@ -3,12 +3,85 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Pr4_Zasetsky_Kosarikov.Pages"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="Page3">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Source="/Images/Func3.png" MaxHeight="120" Margin="5" 
+                   HorizontalAlignment="Left" Stretch="Uniform">
+                <Image.ToolTip>
+                    <ToolTip Content="Формула: y = 9·x⁴ + sin(57.2 + x)"/>
+                </Image.ToolTip>
+            </Image>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="x начальное:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="InputXMin" Width="200" Margin="5" Padding="5" FontSize="14"
+                     ToolTip="Введите начальное значение x"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="x конечное:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="InputXMax" Width="200" Margin="5" Padding="5" FontSize="14"
+                     ToolTip="Введите конечное значение x"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Шаг dx:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="InputDx" Width="200" Margin="5" Padding="5" FontSize="14"
+                     ToolTip="Введите шаг dx"/>
+
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button Name="CalculateButton" Content="Вычислить" Width="120" Height="35" Margin="5" FontSize="14" Click="CalculateButton_Click"
+                        ToolTip="Рассчитать"/>
+                <Button Name="ClearButton" Content="Очистить" Width="120" Height="35" Margin="5" FontSize="14" Click="ClearButton_Click"
+                        ToolTip="Очистить"/>
+            </StackPanel>
+
+            <lvc:CartesianChart Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" 
+                                Name="ChartFunction" Margin="5"
+                                ToolTip="График функции" LegendLocation="Bottom">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="x" FontSize="10">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="LightGray" StrokeThickness="0.5"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="y" FontSize="10">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="LightGray" StrokeThickness="0.5"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Результаты:" VerticalAlignment="Top" Margin="5" FontSize="14" FontWeight="Bold"/>
+            <ScrollViewer Grid.Row="6" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="5">
+                <TextBox Name="ResultBox" IsReadOnly="True" Background="#FFF0F0F0" FontSize="12" 
+                         TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                         ToolTip="Значения x и y"/>
+            </ScrollViewer>
+
+            <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" 
+                    Name="BackButton" Content="На главную" Width="150" Height="40"
+                    HorizontalAlignment="Center" Margin="20" FontSize="14"
+                    Click="BackButton_Click" ToolTip="Вернуться"/>
+        </Grid>
+    </ScrollViewer>
 </Page>
