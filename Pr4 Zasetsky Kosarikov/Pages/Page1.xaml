@@ -6,7 +6,89 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="Page1">
-    <Grid>
 
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               Source="/Images/Func1.png" 
+               MaxHeight="120" 
+               Margin="5" 
+               HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Content="Формула для расчета: β = √(10 * (∛x + x^(y+2))) * (arcsin²(z) - |x - y|)"/>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Введите x:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="InputX" Width="200" Margin="5" Padding="5" FontSize="14">
+            <TextBox.ToolTip>
+                <ToolTip Content="Введите значение для переменной x (целое или дробное число, например: 2,5)"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Введите y:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="InputY" Width="200" Margin="5" Padding="5" FontSize="14">
+            <TextBox.ToolTip>
+                <ToolTip Content="Введите значение для переменной y (целое или дробное число, например: 1)"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Введите z:" VerticalAlignment="Center" Margin="5" FontSize="14"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="InputZ" Width="200" Margin="5" Padding="5" FontSize="14">
+            <TextBox.ToolTip>
+                <ToolTip Content="Введите значение для переменной z (целое или дробное число, например: 0,5)"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Name="CalculateButton" Content="Вычислить" Width="120" Height="35" Margin="5" FontSize="14" Click="CalculateButton_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Рассчитать значение функции на основе введенных данных"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Name="ClearButton" Content="Очистить" Width="120" Height="35" Margin="5" FontSize="14" Click="ClearButton_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Очистить все поля ввода и результат"/>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Результат:" VerticalAlignment="Center" Margin="5" FontSize="14" FontWeight="Bold"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="ResultBox" Width="200" Height="35" Margin="5" Padding="5" 
+                 IsReadOnly="True" 
+                 Background="#FFF0F0F0"
+                 FontSize="14"
+                 Text="Результат">
+            <TextBox.ToolTip>
+                <ToolTip Content="Здесь отобразится вычисленное значение β"/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                Name="BackButton"
+                Content="← На
+главную" 
+                Width="150" Height="40"
+                HorizontalAlignment="Center"
+                Margin="20"
+                FontSize="14"
+                Click="BackButton_Click">
+            <Button.ToolTip>
+                <ToolTip Content="Вернуться на главную страницу"/>
+            </Button.ToolTip>
+        </Button>
     </Grid>
 </Page>
